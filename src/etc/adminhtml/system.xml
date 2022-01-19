@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tracedock" translate="label" sortOrder="1000">
+            <label>TraceDock</label>
+        </tab>
+        <section id="tracedock" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Tracking</label>
+            <tab>tracedock</tab>
+            <resource>Tracedock_TransactionTracking::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label,comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <label>Enable TraceDock Transaction Tracking module</label>
+                    <comment>You can (temporarily) disable the module here.</comment>
+                </field>
+                <field id="production_mode" translate="label,comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <label>Enable Production Mode/label>
+                    <comment>This will enable the variable 'env' set to 'production' to add as a condition in the event in TraceDock.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="api_url" translate="label,comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>TraceDock API endpoint</label>
+                    <comment>The URL where the transaction data needs to be sent to, found under the event in the TraceDock portal.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="attributes" translate="label,comment" type="multiselect" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Included attributes</label>
+                    <comment>Attributes which should be included in the API.</comment>
+                    <source_model>Tracedock\TransactionTracking\Model\Config\Source\ProductAttributes</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:MessageQueue/etc/queue.xsd">
+    <broker topic="tracedock_tracking" type="db" exchange="magento">
+        <queue name="tracedock_tracking"
+               consumer="tracedock_tracking"
+               handler="Tracedock\TransactionTracking\Model\Consumer::process"
+               consumerInstance="Magento\Framework\MessageQueue\Consumer"
+        />
+    </broker>
+</config>

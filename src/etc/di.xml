@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tracedock\TransactionTracking\Api\ConfigInterface" type="Tracedock\TransactionTracking\Model\Config" />
+    <preference for="Tracedock\TransactionTracking\Api\PublisherInterface" type="Tracedock\TransactionTracking\Model\Publisher" />
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="publish-tracedock-invoice" xsi:type="object">Tracedock\TransactionTracking\Console\InvoicePublishCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Tracedock\TransactionTracking\Model\Mapper">
+        <arguments>
+            <argument name="mapperDecorators" xsi:type="array">
+                <item name="standard" xsi:type="object">Tracedock\TransactionTracking\Model\Mapper\StandardDecorator</item>
+                <item name="transaction" xsi:type="object">Tracedock\TransactionTracking\Model\Mapper\TransactionDecorator</item>
+                <item name="products" xsi:type="object">Tracedock\TransactionTracking\Model\Mapper\ProductDecorator</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

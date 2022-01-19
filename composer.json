@@ -1,0 +1,39 @@
+{
+    "name": "tracedock/module-transaction-tracking",
+    "description": "This module handles installation of TraceDock and configuration of serverside transactions",
+    "type": "magento2-module",
+    "license": "CC-BY-NC-ND-3.0",
+    "authors": [
+        {
+            "name": "TraceDock",
+            "email": "support@tracedock.com",
+            "homepage": "https://tracedock.com"
+        }
+    ],
+    "support": {
+        "email": "support@tracedock.com",
+        "docs": "https://docs.tracedock.com"
+    },
+    "homepage": "https://tracedock.com",
+    "require": {
+        "php": "^7.4",
+        "magento/framework": "^102.0|^103.0",
+        "magento/module-sales": "^101.0",
+        "magento/module-asynchronous-operations": "^103.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "Tracedock\\TransactionTracking\\": "src/"
+        }
+    }
+}
