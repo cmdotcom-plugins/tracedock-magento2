@@ -31,7 +31,7 @@ class StandardDecorator implements MapperDecoratorInterface
         /*
          * Magento does not contain a default userId,
          * as such we use the quoteId to stitch with the browser session.
-         * For compatibility with the template installation we forwards both
+         * For compatibility with the template installation we forward both
          * fields to TraceDock endpoint.
          */
 
