@@ -37,9 +37,14 @@ bin/magento setup:upgrade
 In the backend of Magento2, the TraceDock configurations can be found under:
 `Stores > Configuration > Tracedock > General`
 
-To enable TraceDock webhooks, set the `enabled` field to `Yes` and configure the `Tracedock API endpoint` with the URL
-provided by TraceDock. It can be found in the transaction event under the
-[serverside_events](https://portal.tracedock.com/serverside_events) tab of the portal.
+![TraceDock configuration screen](https://github.com/cmdotcom-plugins/tracedock-magento2/blob/main/static/tracedock_tab.png?raw=true)
+
+* __Enable Module__ - With this function you can (temporarily) disable this tab.
+* __Enable Production__ - If this tab is enabled, the variable `env` will be populated with `production`, which allows you to filter it out in TraceDock using the conditions.
+* __API endpoint__ - The endpoint as found in the [serverside_events](https://portal.tracedock.com/serverside_events) tab of the TraceDock user portal.
+* __Included Attribution__ - Attributions that will be included in forwarding data to TraceDock. 
+
+
 
 ## Extendability
 This module uses the decorator pattern to allow for better maintainability and extension on the data that is being sent to TraceDock.
