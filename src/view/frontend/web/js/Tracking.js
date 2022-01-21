@@ -12,8 +12,8 @@ define(['jquery'], function($)
       if (window.checkoutConfig && window.checkoutConfig.quoteData) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-          quoteId: window.checkoutConfig.quoteData.entity_Id,
-          userId: window.checkoutConfig.quoteData.entity_Id
+          quoteId: window.checkoutConfig.quoteData.entity_id,
+          userId: window.checkoutConfig.quoteData.entity_id
         })
       }
     };

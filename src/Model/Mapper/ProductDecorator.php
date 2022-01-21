@@ -90,7 +90,7 @@ class ProductDecorator implements MapperDecoratorInterface
             if (
                 is_scalar($value)
                 && isset($attributes[$code])
-                && isset($allowedAttributes[$code])
+                && in_array($code, $allowedAttributes)
             ) {
                 $data[$code] = $product->getAttributeText($code)
                     ?: $product->getData($code);
