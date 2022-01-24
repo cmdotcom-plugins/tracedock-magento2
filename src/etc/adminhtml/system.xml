@@ -19,22 +19,22 @@
                     <label>Enable Production Mode/label>
                     <comment>This will enable the variable 'env' set to 'production' to add as a condition in the event in TraceDock.</comment>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>
                 <field id="api_url" translate="label,comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>TraceDock API endpoint</label>
                     <comment>The URL where the transaction data needs to be sent to, found under the event in the TraceDock portal.</comment>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>
                 <field id="attributes" translate="label,comment" type="multiselect" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Included attributes</label>
-                    <comment>Attributes which should be included in the API.</comment>
+                    <comment>Attributes which should be included in the API</comment>
                     <source_model>Tracedock\TransactionTracking\Model\Config\Source\ProductAttributes</source_model>
                     <depends>
-                        <field id="enable">1</field>
+                        <field id="enabled">1</field>
                     </depends>
                 </field>
             </group>
