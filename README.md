@@ -21,10 +21,14 @@ This readme contains a step-by-step description of how you can install the modul
 
 ## Installation
 
-To install this module using composer run:
+To install this module using composer run (via github):
 
 ```bash
-composer require tracedock/module-transaction-tracking
+composer config repositories.tracedock.magento2 git git@github.com:cmdotcom-plugins/tracedock-magento2.git
+composer require cmdotcom-plugins/tracedock-magento2.git main
+php bin/magento setup:upgrade
+php bin/magento setup:static-content:deploy
+php bin/magento cache:clean
 ```
 
 When the module is installed run the Magento2 command:
