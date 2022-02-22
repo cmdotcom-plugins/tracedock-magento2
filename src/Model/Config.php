@@ -45,7 +45,7 @@ class Config implements ConfigInterface
 
     public function getAttributes(): array
     {
-        $attributes = $this->config->getValue(
+        $attributes = (string) $this->config->getValue(
             $this->getConfigPath('attributes'),
             ScopeInterface::SCOPE_STORE
         );
