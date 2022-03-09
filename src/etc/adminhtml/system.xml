@@ -16,7 +16,7 @@
                 </field>
                 <field id="production_mode" translate="label,comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <label>Enable Production Mode/label>
+                    <label>Enable Production Mode</label>
                     <comment>This will enable the variable 'env' set to 'production' to add as a condition in the event in TraceDock.</comment>
                     <depends>
                         <field id="enabled">1</field>
