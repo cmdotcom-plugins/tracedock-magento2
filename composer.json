@@ -16,7 +16,7 @@
     },
     "homepage": "https://tracedock.com",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.1",
         "magento/framework": "*",
         "magento/module-sales": "*",
         "magento/module-asynchronous-operations": "*"
