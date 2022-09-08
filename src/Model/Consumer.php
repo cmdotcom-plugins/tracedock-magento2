@@ -11,6 +11,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\ResponseFactory;
 use Magento\Framework\MessageQueue\ConnectionLostException;
+use Magento\Framework\Serialize\SerializerInterface;
 use Mediact\Webhook\Model\CustomFilters;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -24,12 +25,16 @@ class Consumer
 
     private LoggerInterface $logger;
 
+    private SerializerInterface $jsonSerializer;
+
     public function __construct(
         ConfigInterface $config,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        SerializerInterface $jsonSerializer
     ) {
         $this->config = $config;
         $this->logger = $logger;
+        $this->jsonSerializer = $jsonSerializer;
     }
 
     /**
@@ -65,7 +70,17 @@ class Consumer
      */
     public function process(string $json): void
     {
-        $url = parse_url($this->config->getApiUrl());
+        $queueData = $this->jsonSerializer->unserialize($json);
+
+        // we need to do this trick, to get api url based on store configuration
+        if (isset($queueData['tracedockApiUrl']) && !empty($queueData['tracedockApiUrl'])) {
+            $url = parse_url($queueData['tracedockApiUrl']);
+            unset($queueData['tracedockApiUrl']);
+            $json = $this->jsonSerializer->serialize($queueData);
+        } else {
+            $url = parse_url($this->config->getApiUrl());
+        }
+
         if (empty($url)) {
             throw new ConnectionLostException(
                 'Invalid payload url for TraceDock consumer: ' . $url

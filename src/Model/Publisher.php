@@ -49,6 +49,10 @@ class Publisher implements TracedockPublisherInterface
             return;
         }
 
+        if($this->config->getApiUrl()){
+            $invoice->getExtensionAttributes()->setTracedockApiUrl($this->config->getApiUrl());
+        }
+
         if ($force || $this->isAllowed($invoice)) {
             $this->publisher->publish(
                 self::TOPIC_NAME,
@@ -67,7 +71,7 @@ class Publisher implements TracedockPublisherInterface
         InvoiceInterface $invoice
     ): bool {
         return $invoice instanceof Invoice
-            && $invoice->getState() == $invoice::STATE_PAID
-            && $invoice->getOrigData(Invoice::STATE) != $invoice->getState();
+               && $invoice->getState() == $invoice::STATE_PAID
+               && $invoice->getOrigData(Invoice::STATE) != $invoice->getState();
     }
 }
