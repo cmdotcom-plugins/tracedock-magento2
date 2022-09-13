@@ -57,15 +57,15 @@ class Config implements ConfigInterface
     }
 
     /**
+     * @param int|null $storeId
+     *
      * @return string
      */
-    public function getApiUrl(): string
+    public function getApiUrl(?int $storeId = null): string
     {
-        return (string)$this->config->getValue(
-            $this->getConfigPath('api_url'),
-            ScopeInterface::SCOPE_STORE,
-            $this->getStoreId()
-        );
+        $storeId = $storeId ?? $this->getStoreId();
+
+        return (string)$this->config->getValue($this->getConfigPath('api_url'), ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**

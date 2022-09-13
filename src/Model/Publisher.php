@@ -49,8 +49,10 @@ class Publisher implements TracedockPublisherInterface
             return;
         }
 
-        if($this->config->getApiUrl()){
-            $invoice->getExtensionAttributes()->setTracedockApiUrl($this->config->getApiUrl());
+        $apiUrl = $this->config->getApiUrl((int)$invoice->getOrder()->getStoreId());
+
+        if ($apiUrl) {
+            $invoice->getExtensionAttributes()->setTracedockApiUrl($apiUrl);
         }
 
         if ($force || $this->isAllowed($invoice)) {
