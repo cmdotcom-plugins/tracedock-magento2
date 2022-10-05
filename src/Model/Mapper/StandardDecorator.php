@@ -28,6 +28,8 @@ class StandardDecorator implements MapperDecoratorInterface
             ? $invoice->getOrder()->getQuoteId()
             : 0;
 
+        $tracedockApiUrl = $invoice instanceof Invoice ? $invoice->getExtensionAttributes()->getTracedockApiUrl() : '';
+
         /*
          * Magento does not contain a default userId,
          * as such we use the quoteId to stitch with the browser session.
@@ -36,9 +38,10 @@ class StandardDecorator implements MapperDecoratorInterface
          */
 
         return [
-            'env'      => $mode,
-            'quoteId' => $quoteId,
-            'userId' => $quoteId,
+            'env'             => $mode,
+            'quoteId'         => $quoteId,
+            'userId'          => $quoteId,
+            'tracedockApiUrl' => $tracedockApiUrl,
         ];
     }
 }
