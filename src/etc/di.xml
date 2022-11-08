@@ -7,6 +7,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="publish-tracedock-invoice" xsi:type="object">Tracedock\TransactionTracking\Console\InvoicePublishCommand</item>
+                <item name="preview-tracedock-invoice" xsi:type="object">Tracedock\TransactionTracking\Console\InvoicePreviewCommand</item>
             </argument>
         </arguments>
     </type>
