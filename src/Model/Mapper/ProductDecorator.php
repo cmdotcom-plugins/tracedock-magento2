@@ -37,10 +37,14 @@ class ProductDecorator implements MapperDecoratorInterface
         foreach ($invoice->getItems() as $item) {
             $productIds[] = $item->getProductId();
 
+            if ($item->getOrderItem()->getParentItem()) {
+                continue;
+            }
+
             $data[] = [
                 'id' => $item->getEntityId(),
                 'name' => $item->getName(),
-                'price' => $item->getPrice(),
+                'price' => $item->getPriceInclTax(), //@todo make price excl/incl tax configurable in module.
                 'quantity' => $item->getQty(),
                 'sku' => $item->getSku(),
                 'variant' => '',
@@ -71,7 +75,7 @@ class ProductDecorator implements MapperDecoratorInterface
             }
         }
 
-        return ['product' => $data];
+        return ['products' => $data];
     }
 
     /**
